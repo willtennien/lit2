@@ -1,4 +1,13 @@
-maplit
+
+maplit2
+======
+
+Successor to maplit
+-------------------
+
+Maplit has stopped being updated, so this is the new home for maplit improvements.
+
+Maplit
 ======
 
 Container / collection literal macros for `HashMap <https://doc.rust-lang.org/beta/std/collections/struct.HashMap.html>`_, `HashSet <https://doc.rust-lang.org/beta/std/collections/struct.HashSet.html>`_, `BTreeMap <https://doc.rust-lang.org/beta/std/collections/struct.BTreeMap.html>`_, `BTreeSet <https://doc.rust-lang.org/beta/std/collections/struct.BTreeSet.html>`_.
@@ -12,50 +21,11 @@ __ https://docs.rs/maplit/
 |build_status|_ |crates|_
 
 .. |build_status| image:: https://travis-ci.org/bluss/maplit.svg?branch=master
-.. _build_status: https://travis-ci.org/bluss/maplit
+.. _build_status: https://travis-ci.org/bluss/maplit2
 
-.. |crates| image:: http://meritbadge.herokuapp.com/maplit
-.. _crates: https://crates.io/crates/maplit
+.. |crates| image:: http://meritbadge.herokuapp.com/maplit2
+.. _crates: https://crates.io/crates/maplit2
 
-
-Recent Changes
---------------
-
-- 1.0.2
-
-  - Fix usage of the macros through full paths, like `maplit::hashmap!(..)` (#27)
-
-- 1.0.1
-
-  - Fix ``unused_results`` lint in the macros by @povilasb
-
-- 1.0.0
-
-  - maplit 1.0!
-  - Only documentation changes since the last version
-
-- 0.1.6
-
-  - Add macro ``convert_args!`` for composable opt-in conversion of the
-    expressions being used for the maplit macros.
-
-- 0.1.5
-
-  - Add license files correctly
-  - Add crates.io category
-  - Small doc improvements by @seeekr and @sanmai-NL
-
-- 0.1.4
-
-  - Update docs to point to docs.rs
-
-- 0.1.2
-
-  - Now supports more arguments in hashset!{} and hashmap!{}
-
-- 0.1.0
-
-  - Initial release
 
 FAQ
 ---
