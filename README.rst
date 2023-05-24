@@ -16,15 +16,11 @@ You can use these for convenience. Using them has no other implications.
 
 Please read the `API documentation here`__
 
-__ https://docs.rs/maplit/
+__ https://docs.rs/lit2/
 
 |build_status|_ |crates|_
 
-.. |build_status| image:: https://travis-ci.org/bluss/maplit.svg?branch=master
-.. _build_status: https://travis-ci.org/bluss/maplit2
-
-.. |crates| image:: http://meritbadge.herokuapp.com/maplit2
-.. _crates: https://crates.io/crates/maplit2
+.. _crates: https://crates.io/crates/lit2
 
 
 FAQ
