@@ -5,7 +5,7 @@
 //! Macros for container literals with specific type.
 //!
 //! ```
-//! #[macro_use] extern crate maplit2;
+//! use maplit2::*;
 //!
 //! # fn main() {
 //! let map = hashmap!{
@@ -31,7 +31,7 @@
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit2;
+/// use maplit2::*;
 /// # fn main() {
 ///
 /// let map = hashmap!{
@@ -66,7 +66,7 @@ macro_rules! hashmap {
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit;
+/// use maplit::*;
 /// use std::collections::HashMap;
 /// struct Foo;
 /// struct Bar;
@@ -109,7 +109,7 @@ macro_rules! hashmap_ex {
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit2;
+/// use maplit2::*;
 /// # fn main() {
 ///
 /// let map = map!{
@@ -141,7 +141,7 @@ macro_rules! map{
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit2;
+/// use maplit2::*;
 /// # fn main() {
 ///
 /// let map = dict!{
@@ -172,7 +172,7 @@ macro_rules! dict{
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit2;
+/// use maplit2::*;
 /// # fn main() {
 ///
 /// let set = hashset!{"a", "b"};
@@ -204,7 +204,7 @@ macro_rules! hashset {
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit2;
+/// use maplit2::*;
 /// # fn main() {
 ///
 /// let set = set!{"a", "b"};
@@ -237,7 +237,7 @@ macro_rules! set {
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit2;
+/// use maplit2::*;
 /// # fn main() {
 ///
 /// let map = btreemap!{
@@ -270,7 +270,7 @@ macro_rules! btreemap {
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit2;
+/// use maplit2::*;
 /// # fn main() {
 ///
 /// let set = btreeset!{"a", "b"};
@@ -317,7 +317,7 @@ pub fn __id<T>(t: T) -> T { t }
 /// # Examples
 ///
 /// ```
-/// #[macro_use] extern crate maplit2;
+/// use maplit2::*;
 /// # fn main() {
 ///
 /// use std::collections::HashMap;
