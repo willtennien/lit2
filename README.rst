@@ -1,9 +1,6 @@
 
-maplit2 a.k.a lit2
-==================
-
-Successor to maplit
--------------------
+maplit2 a.k.a. lit2: Successor to maplit
+========================================
 
 Maplit has stopped being updated, so this is the new home for maplit improvement.
 
