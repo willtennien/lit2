@@ -1,11 +1,11 @@
 #![warn(missing_docs)]
 #![warn(unused_results)]
-#![doc(html_root_url="https://docs.rs/maplit/1/")]
+#![doc(html_root_url="https://docs.rs/maplit2/1/")]
 
 //! Macros for container literals with specific type.
 //!
 //! ```
-//! #[macro_use] extern crate maplit;
+//! #[macro_use] extern crate maplit2;
 //!
 //! # fn main() {
 //! let map = hashmap!{
@@ -15,7 +15,7 @@
 //! # }
 //! ```
 //!
-//! The **maplit** crate uses `=>` syntax to separate the key and value for the
+//! The **maplit2** crate uses `=>` syntax to separate the key and value for the
 //! mapping macros. (It was not possible to use `:` as separator due to syntactic
 //! restrictions in regular `macro_rules!` macros.)
 //!
@@ -31,7 +31,7 @@
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit;
+/// #[macro_use] extern crate maplit2;
 /// # fn main() {
 ///
 /// let map = hashmap!{
@@ -60,12 +60,76 @@ macro_rules! hashmap {
     };
 }
 
+#[macro_export(local_inner_macros)]
+/// A slightly more concise version of "hashmap!" for the concision-minded. Create a **HashMap** from a list of key-value pairs
+///
+/// ## Example
+///
+/// ```
+/// #[macro_use] extern crate maplit2;
+/// # fn main() {
+///
+/// let map = map!{
+///     "a": 1,
+///     "b": 2,
+/// };
+/// assert_eq!(map["a"], 1);
+/// assert_eq!(map["b"], 2);
+/// assert_eq!(map.get("c"), None);
+/// # }
+/// ```
+macro_rules! map{
+    ( $($key:tt : $val:expr),* $(,)? ) =>{{
+        #[allow(unused_mut)]
+        let mut map = ::std::collections::HashMap::with_capacity(hashmap!(@count $($key),* ));
+        $(
+            #[allow(unused_parens)]
+            let _ = map.insert($key, $val);
+        )*
+        map
+    }};
+    (@replace $_t:tt $e:expr ) => { $e };
+    (@count $($t:tt)*) => { <[()]>::len(&[$( map!(@replace $t ()) ),*]) }
+}
+
+#[macro_export(local_inner_macros)]
+/// Alias of "map!". Create a **HashMap** from a list of key-value pairs
+///
+/// ## Example
+///
+/// ```
+/// #[macro_use] extern crate maplit2;
+/// # fn main() {
+///
+/// let map = dict!{
+///     "a": 1,
+///     "b": 2,
+/// };
+/// assert_eq!(map["a"], 1);
+/// assert_eq!(map["b"], 2);
+/// assert_eq!(map.get("c"), None);
+/// # }
+/// ```
+macro_rules! dict{
+    ( $($key:tt : $val:expr),* $(,)? ) =>{{
+        #[allow(unused_mut)]
+        let mut map = ::std::collections::HashMap::with_capacity(hashmap!(@count $($key),* ));
+        $(
+            #[allow(unused_parens)]
+            let _ = map.insert($key, $val);
+        )*
+        map
+    }};
+    (@replace $_t:tt $e:expr ) => { $e };
+    (@count $($t:tt)*) => { <[()]>::len(&[$( map!(@replace $t ()) ),*]) }
+}
+
 /// Create a **HashSet** from a list of elements.
 ///
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit;
+/// #[macro_use] extern crate maplit2;
 /// # fn main() {
 ///
 /// let set = hashset!{"a", "b"};
@@ -98,7 +162,7 @@ macro_rules! hashset {
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit;
+/// #[macro_use] extern crate maplit2;
 /// # fn main() {
 ///
 /// let map = btreemap!{
@@ -131,7 +195,7 @@ macro_rules! btreemap {
 /// ## Example
 ///
 /// ```
-/// #[macro_use] extern crate maplit;
+/// #[macro_use] extern crate maplit2;
 /// # fn main() {
 ///
 /// let set = btreeset!{"a", "b"};
@@ -158,7 +222,7 @@ macro_rules! btreeset {
 #[doc(hidden)]
 pub fn __id<T>(t: T) -> T { t }
 
-/// Macro that converts the keys or key-value pairs passed to another maplit
+/// Macro that converts the keys or key-value pairs passed to another maplit2
 /// macro. The default conversion is to use the [`Into`] trait, if no
 /// custom conversion is passed.
 ///
@@ -167,7 +231,7 @@ pub fn __id<T>(t: T) -> T { t }
 /// `convert_args!(` `keys=` *function* `,` `values=` *function* `,`
 ///     *macro_name* `!(` [ *key* => *value* [, *key* => *value* ... ] ] `))`
 ///
-/// Here *macro_name* is any other maplit macro and either or both of the
+/// Here *macro_name* is any other maplit2 macro and either or both of the
 /// explicit `keys=` and `values=` parameters can be omitted.
 ///
 /// [`Into`]: https://doc.rust-lang.org/std/convert/trait.Into.html
@@ -178,7 +242,7 @@ pub fn __id<T>(t: T) -> T { t }
 /// # Examples
 ///
 /// ```
-/// #[macro_use] extern crate maplit;
+/// #[macro_use] extern crate maplit2;
 /// # fn main() {
 ///
 /// use std::collections::HashMap;
@@ -204,7 +268,7 @@ pub fn __id<T>(t: T) -> T { t }
 /// // Note: map2 is a HashMap<String, i32>, but we didn't need to specify the type
 /// let _: HashMap<String, i32> = map2;
 ///
-/// // c. convert_args! works with all the maplit macros -- and macros from other
+/// // c. convert_args! works with all the maplit2 macros -- and macros from other
 /// // crates that have the same "signature".
 /// // For example, btreeset and conversion from &str to Vec<u8>.
 ///
