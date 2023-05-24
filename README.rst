@@ -21,7 +21,7 @@ __ https://docs.rs/lit2/
 |build_status|_ |crates|_
 
 .. _crates: https://crates.io/crates/lit2
-
+.. |crates| image:: https://badgers.space/crates/version/lit2
 
 FAQ
 ---
