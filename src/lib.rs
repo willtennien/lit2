@@ -156,6 +156,38 @@ macro_rules! hashset {
     };
 }
 
+/// Alias of "hashset!". Create a **HashSet** from a list of elements.
+///
+/// ## Example
+///
+/// ```
+/// #[macro_use] extern crate maplit2;
+/// # fn main() {
+///
+/// let set = set!{"a", "b"};
+/// assert!(set.contains("a"));
+/// assert!(set.contains("b"));
+/// assert!(!set.contains("c"));
+/// # }
+/// ```
+#[macro_export(local_inner_macros)]
+macro_rules! set {
+    (@single $($x:tt)*) => (());
+    (@count $($rest:expr),*) => (<[()]>::len(&[$(hashset!(@single $rest)),*]));
+
+    ($($key:expr,)+) => { hashset!($($key),+) };
+    ($($key:expr),*) => {
+        {
+            let _cap = hashset!(@count $($key),*);
+            let mut _set = ::std::collections::HashSet::with_capacity(_cap);
+            $(
+                let _ = _set.insert($key);
+            )*
+            _set
+        }
+    };
+}
+
 #[macro_export(local_inner_macros)]
 /// Create a **BTreeMap** from a list of key-value pairs
 ///
