@@ -1,11 +1,11 @@
 #![warn(missing_docs)]
 #![warn(unused_results)]
-#![doc(html_root_url="https://docs.rs/maplit2/1/")]
+#![doc(html_root_url="https://docs.rs/lit2/1/")]
 
 //! Macros for container literals with specific type.
 //!
 //! ```
-//! use maplit2::*;
+//! use lit2::*;
 //!
 //! # fn main() {
 //! let map = hashmap!{
@@ -15,7 +15,7 @@
 //! # }
 //! ```
 //!
-//! The **maplit2** crate uses `=>` syntax to separate the key and value for the
+//! The **lit2** crate uses `=>` syntax to separate the key and value for the
 //! mapping macros. (It was not possible to use `:` as separator due to syntactic
 //! restrictions in regular `macro_rules!` macros.)
 //!
@@ -31,7 +31,7 @@
 /// ## Example
 ///
 /// ```
-/// use maplit2::*;
+/// use lit2::*;
 /// # fn main() {
 ///
 /// let map = hashmap!{
@@ -109,7 +109,7 @@ macro_rules! hashmap_ex {
 /// ## Example
 ///
 /// ```
-/// use maplit2::*;
+/// use lit2::*;
 /// # fn main() {
 ///
 /// let map = map!{
@@ -141,7 +141,7 @@ macro_rules! map{
 /// ## Example
 ///
 /// ```
-/// use maplit2::*;
+/// use lit2::*;
 /// # fn main() {
 ///
 /// let map = dict!{
@@ -172,7 +172,7 @@ macro_rules! dict{
 /// ## Example
 ///
 /// ```
-/// use maplit2::*;
+/// use lit2::*;
 /// # fn main() {
 ///
 /// let set = hashset!{"a", "b"};
@@ -204,7 +204,7 @@ macro_rules! hashset {
 /// ## Example
 ///
 /// ```
-/// use maplit2::*;
+/// use lit2::*;
 /// # fn main() {
 ///
 /// let set = set!{"a", "b"};
@@ -237,7 +237,7 @@ macro_rules! set {
 /// ## Example
 ///
 /// ```
-/// use maplit2::*;
+/// use lit2::*;
 /// # fn main() {
 ///
 /// let map = btreemap!{
@@ -270,7 +270,7 @@ macro_rules! btreemap {
 /// ## Example
 ///
 /// ```
-/// use maplit2::*;
+/// use lit2::*;
 /// # fn main() {
 ///
 /// let set = btreeset!{"a", "b"};
@@ -297,7 +297,7 @@ macro_rules! btreeset {
 #[doc(hidden)]
 pub fn __id<T>(t: T) -> T { t }
 
-/// Macro that converts the keys or key-value pairs passed to another maplit2
+/// Macro that converts the keys or key-value pairs passed to another lit2
 /// macro. The default conversion is to use the [`Into`] trait, if no
 /// custom conversion is passed.
 ///
@@ -306,7 +306,7 @@ pub fn __id<T>(t: T) -> T { t }
 /// `convert_args!(` `keys=` *function* `,` `values=` *function* `,`
 ///     *macro_name* `!(` [ *key* => *value* [, *key* => *value* ... ] ] `))`
 ///
-/// Here *macro_name* is any other maplit2 macro and either or both of the
+/// Here *macro_name* is any other lit2 macro and either or both of the
 /// explicit `keys=` and `values=` parameters can be omitted.
 ///
 /// [`Into`]: https://doc.rust-lang.org/std/convert/trait.Into.html
@@ -317,7 +317,7 @@ pub fn __id<T>(t: T) -> T { t }
 /// # Examples
 ///
 /// ```
-/// use maplit2::*;
+/// use lit2::*;
 /// # fn main() {
 ///
 /// use std::collections::HashMap;
@@ -343,7 +343,7 @@ pub fn __id<T>(t: T) -> T { t }
 /// // Note: map2 is a HashMap<String, i32>, but we didn't need to specify the type
 /// let _: HashMap<String, i32> = map2;
 ///
-/// // c. convert_args! works with all the maplit2 macros -- and macros from other
+/// // c. convert_args! works with all the lit2 macros -- and macros from other
 /// // crates that have the same "signature".
 /// // For example, btreeset and conversion from &str to Vec<u8>.
 ///
