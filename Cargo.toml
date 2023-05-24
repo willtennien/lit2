@@ -1,11 +1,11 @@
 [package]
-name = "maplit2"
+name = "lit2"
 version = "1.0.5"
 authors = ["willtennien"]
 
 license = "MIT/Apache-2.0"
-repository = "https://github.com/willtennien/maplit2"
-documentation = "https://docs.rs/maplit2/"
+repository = "https://github.com/willtennien/lit2"
+documentation = "https://docs.rs/lit2/"
 
 description = "Collection helper libraries and “literal” macros for HashMap, HashSet, BTreeMap, and BTreeSet."
 
