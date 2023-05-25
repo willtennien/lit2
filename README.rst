@@ -1,9 +1,9 @@
 
-maplit2 a.k.a lit2
-==================
+maplit2 a.k.a. lit2
+===================
 
 Successor to maplit
--------------------
+------
 
 Maplit has stopped being updated, so this is the new home for maplit improvement.
 
@@ -21,7 +21,7 @@ __ https://docs.rs/lit2/
 |build_status|_ |crates|_
 
 .. _crates: https://crates.io/crates/lit2
-
+.. |crates| image:: https://badgers.space/crates/version/lit2
 
 FAQ
 ---
