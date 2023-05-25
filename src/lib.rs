@@ -12,12 +12,14 @@
 //!     "a" => 1,
 //!     "b" => 2,
 //! };
+//! 
+//! let set = set!{1, 2, 3};
 //! # }
 //! ```
 //!
 //! The **lit2** crate uses `=>` syntax to separate the key and value for the
-//! mapping macros. (It was not possible to use `:` as separator due to syntactic
-//! restrictions in regular `macro_rules!` macros.)
+//! mapping macros. It is also possible to use the `:` separator, but the keys cannot
+//! be expressions.
 //!
 //! Note that rust macros are flexible in which brackets you use for the invocation.
 //! You can use them as `hashmap!{}` or `hashmap![]` or `hashmap!()`.
